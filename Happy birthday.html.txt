@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Happy Birthday!</title>
+    <style>
+        body {
+            background: #FF69B4;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            position: relative;
+            height: 100vh;
+        }
+
+        .message {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: white;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .lotus {
+            width: 100px;
+            position: absolute;
+            animation: fall 10s linear infinite;
+            opacity: 0.7;
+        }
+
+        .hearts {
+            position: absolute;
+            color: #FF1493;
+            font-size: 20px;
+            animation: heartFloat 5s linear infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes fall {
+            from { top: -10%; }
+            to { top: 110%; }
+        }
+
+        @keyframes heartFloat {
+            0% { opacity: 0; transform: translateY(0) scale(0.5); }
+            50% { opacity: 1; }
+            100% { opacity: 0; transform: translateY(-100px) scale(1.5); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="message">
+            <h1>?? Happy Birthday! ??</h1>
+            <p style="font-size: 1.2em;">Dear [孟瑶],</p >
+            <p>On this special day, I want to send you:</p >
+            <p>?? Sweetest wishes from miles away ??</p >
+            <p>?? Love that crosses borders ??</p >
+            <p>?? Joy as bright as Dhaka's stars ??</p >
+            <p>You're always in my thoughts! ??</p >
+            <p>??? ???????! (Shubho jonmodin!!)</p >
+        </div>
+    </div>
+
+    <script>
+        // 创建莲花动画
+        function createLotuses() {
+            const num = 15;
+            for (let i = 0; i < num; i++) {
+                const lotus = document.createElement('img');
+                lotus.src = 'https://www.svgrepo.com/download/334056/lotus-flower.svg';
+                lotus.className = 'lotus';
+                lotus.style.left = Math.random() * 100 + '%';
+                lotus.style.animationDelay = Math.random() * 10 + 's';
+                document.body.appendChild(lotus);
+            }
+        }
+
+        // 创建爱心动画
+        function createHearts() {
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.className = 'hearts';
+                heart.innerHTML = '?';
+                heart.style.left = Math.random() * 95 + '%';
+                document.body.appendChild(heart);
+                
+                setTimeout(() => heart.remove(), 5000);
+            }, 300);
+        }
+
+        // 初始化动画
+        window.onload = function() {
+            createLotuses();
+            createHearts();
+        }
+    </script>
+</body>
+</html>
